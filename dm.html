@@ -104,18 +104,18 @@
 
         .button-group {
             margin-top: 20px;
-            display: block; /* Alterado para exibir os botões em uma coluna */
+            text-align: center; /* Centraliza os botões */
         }
 
         .button-group a {
             text-decoration: none;
-            display: block; /* Alterado para exibir os botões em uma coluna */
+            display: inline-block; /* Exibe os botões em linha */
             margin-bottom: 10px; /* Adicionada margem para separar os botões */
         }
 
         .button {
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px; /* Largura reduzida */
+            font-size: 14px; /* Fonte um pouco menor */
             border-radius: 25px;
             cursor: pointer;
             background-color: #6200ea;
@@ -134,7 +134,7 @@
 
         .footer-button {
             display: inline-block;
-            width: 100%; /* Alterado para ocupar a largura total */
+            width: 100%;
         }
 
         .smiley {
@@ -145,13 +145,11 @@
             pointer-events: none;
         }
 
-        /* Adiciona animação de queda para os emoticons */
         @keyframes drop {
             0% { transform: translateY(-50px); opacity: 1; }
             100% { transform: translateY(100px); opacity: 0; }
         }
 
-        /* Estilo da notificação no canto superior direito */
         .notification {
             position: fixed;
             top: 10px;
@@ -162,10 +160,9 @@
             border-radius: 5px;
             font-size: 16px;
             z-index: 9999;
-            display: none; /* Começa invisível */
+            display: none;
         }
 
-        /* Estilo do popup */
         .popup {
             position: fixed;
             top: 50%;
@@ -181,7 +178,7 @@
         }
 
         .popup .button {
-            width: 100%; /* Alterado para ocupar a largura total */
+            width: 100%;
             margin: 10px 0;
         }
 
@@ -210,7 +207,6 @@
         </div>
     </div>
 
-    <!-- Popup -->
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
         <p>OBRIGATÓRIO: Compartilhe o Espião com um afiliado para usá-lo de graça!</p>
@@ -218,7 +214,6 @@
         <button class="button" onclick="sendToWhatsApp()">Pode checar! Já compartilhei </button>
     </div>
 
-    <!-- Notificação de espionagem -->
     <div id="notification" class="notification"></div>
 
     <script>
@@ -228,19 +223,15 @@
         const notification = document.getElementById('notification');
         const popup = document.getElementById('popup');
 
-        // Função para mostrar notificação "x pessoas espionando agora!" no canto superior direito
         setInterval(() => {
             notificationCount++;
             notification.textContent = `${notificationCount} pessoa(s) espionando agora!`;
             notification.style.display = 'block';
-            
-            // A notificação desaparece após 5 segundos
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 5000);
-        }, 60000); // a cada 1 minuto
+        }, 60000);
 
-        // Função para validar o formato do código e enviar para WhatsApp
         function sendToWhatsApp() {
             const productCode = productInput.value.trim();
             if (productCode && productCode.startsWith("HP")) {
@@ -251,55 +242,42 @@
             }
         }
 
-        // Função para abrir o popup
         function openPopup() {
             popup.style.display = 'block';
         }
 
-        // Função para fechar o popup
         function closePopup() {
             popup.style.display = 'none';
         }
 
-        // Função para redirecionar para o link "Não Tenho o Espião"
         function redirectToEspiao() {
-            const productCode = productInput.value.trim() + "18";  // Adicionando o número 18
-	        if (productCode && productCode.startsWith("HP")) {
-		    const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
-
-            	const newWindow = window.open(url, '_blank');
-	        } else {
+            const productCode = productInput.value.trim() + "18";  
+            if (productCode && productCode.startsWith("HP")) {
+                const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
+                window.open(url, '_blank');
+            } else {
                 alert("Ops! O código deve começar com 'HP'.");
             }
         }
 
-        // Função para criar emoticons sorridentes caindo
         function createSmiley() {
             const smiley = document.createElement('span');
             smiley.className = 'smiley';
             smiley.textContent = '🤑';
             document.body.appendChild(smiley);
-
-            // Coloca o smiley em posições aleatórias no topo da tela
             smiley.style.left = Math.random() * window.innerWidth + 'px';
-
-            // Remove o smiley quando ele sair da tela
             setTimeout(() => {
                 smiley.remove();
             }, 1000);
         }
 
-        // Monitorar quando o usuário começa a digitar
         productInput.addEventListener('input', () => {
             clearTimeout(typingTimer);
             typingTimer = setTimeout(() => {
-                // Se o usuário parar de digitar, parar de cair os emoticons
                 if (productInput.value.length > 0) {
                     createSmiley();
                 }
             }, 200);
-
-            // Continuar criando emoticons enquanto o usuário digitar
             if (productInput.value.length > 0) {
                 createSmiley();
             }
