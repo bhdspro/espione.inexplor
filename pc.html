@@ -248,7 +248,7 @@
         function sendToWhatsApp() {
             const productCode = productInput.value.trim();
             if (productCode && productCode.startsWith("HP")) {
-                const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(`Espione o Produto: ${productCode}`)}`;
+                const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}`;
                 window.open(url, '_blank');
             } else {
                 alert("Ops! O código deve começar com 'HP'.");
@@ -267,9 +267,11 @@
 
         // Função para redirecionar para o link "Não Tenho o Espião"
         function redirectToEspiao() {
-            const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode + 18)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
-            window.open(url, '_blank');
+            const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(Number(productCode) + 18)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
+    
+            const newWindow = window.open(url, '_blank');
         }
+
 
         // Função para criar emoticons sorridentes caindo
         function createSmiley() {
