@@ -104,13 +104,13 @@
 
         .button-group {
             margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
+            display: block; /* Alterado para exibir os botões em uma coluna */
         }
 
         .button-group a {
             text-decoration: none;
-            width: 48%;
+            display: block; /* Alterado para exibir os botões em uma coluna */
+            margin-bottom: 10px; /* Adicionada margem para separar os botões */
         }
 
         .button {
@@ -134,11 +134,7 @@
 
         .footer-button {
             display: inline-block;
-            width: 48%;
-        }
-
-        .footer-button:first-child {
-            margin-right: 10px;
+            width: 100%; /* Alterado para ocupar a largura total */
         }
 
         .smiley {
@@ -185,7 +181,7 @@
         }
 
         .popup .button {
-            width: 48%;
+            width: 100%; /* Alterado para ocupar a largura total */
             margin: 10px 0;
         }
 
