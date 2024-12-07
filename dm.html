@@ -104,13 +104,17 @@
 
         .button-group {
             margin-top: 20px;
-            text-align: center; /* Centraliza os botões */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         .button-group a {
             text-decoration: none;
-            display: inline-block; /* Exibe os botões em linha */
             margin-bottom: 10px; /* Adicionada margem para separar os botões */
+            width: 100%;
+            max-width: 300px; /* Limita a largura máxima dos botões */
         }
 
         .button {
@@ -125,6 +129,8 @@
             display: inline-block;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Faz os botões ficarem com largura igual */
+            max-width: 300px; /* Limita a largura máxima */
         }
 
         .button:hover {
@@ -175,6 +181,8 @@
             z-index: 10000;
             display: none;
             text-align: center;
+            width: 100%;
+            max-width: 400px; /* Largura máxima para o popup */
         }
 
         .popup .button {
