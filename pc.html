@@ -267,12 +267,11 @@
 
         // Função para redirecionar para o link "Não Tenho o Espião"
         function redirectToEspiao() {
-            const productCode = productInput.value.trim();
+            const productCode = productInput.value.trim() + "18";  // Adicionando o número 18
             const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
 
             const newWindow = window.open(url, '_blank');
         }
-
 
         // Função para criar emoticons sorridentes caindo
         function createSmiley() {
