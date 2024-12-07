@@ -217,8 +217,8 @@
     <!-- Popup -->
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
-        <p>Compartilhe o Espião para Usar de Graça!</p>
-        <button class="button" onclick="redirectToEspiao()">Vou Compartilhar com um Afiliado</button>
+        <p>Compartilhe o Espião com um Afiliado para usar de graça!</p>
+        <button class="button" onclick="redirectToEspiao()">Vou Compartilhar Agora</button>
         <button class="button" onclick="sendToWhatsApp()">Pode Checar! Já Compartilhei</button>
     </div>
 
@@ -268,6 +268,7 @@
         // Função para redirecionar para o link "Não Tenho o Espião"
         function redirectToEspiao() {
             const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode + 18)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
+            window.open(url, '_blank');
         }
 
         // Função para criar emoticons sorridentes caindo
