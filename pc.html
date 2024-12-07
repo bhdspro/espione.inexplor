@@ -7,119 +7,118 @@
     <link href="https://fonts.googleapis.com/css2?family=Canva+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        /* Estilos (sem alteração) */
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🎁 Descubra o produto do seu concorrente</h1>
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <input type="text" id="productInput" placeholder="Digite o código de transação: HP0232392842">
-            <button class="whatsapp-button" onclick="openPopup()">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </div>
-        <div class="button-group">
-            <a href="https://inexplor.com" class="button footer-button">🤑 Quero +150 Produtos Ocultos Secretos</a>
-            <a href="https://ajuda.inexplor.com/hpx9/preciso-ajuda" class="button footer-button">😞 Preciso de Ajuda com o Espião</a>
-        </div>
-    </div>
+        body {
+            font-family: 'Canva Sans', sans-serif;
+            background: linear-gradient(45deg, #6200ea, #3700b3, #018786);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            overflow: hidden;
+        }
 
-    <!-- Popup -->
-    <div id="popup" class="popup">
-        <span class="close-btn" onclick="closePopup()">X</span>
-        <p>OBRIGATÓRIO: Compartilhe o Espião com um Afiliado para usar de graça!</p>
-        <button class="button" onclick="redirectToEspiao()">Vou Compartilhar Agora Mesmo!</button>
-        <button class="button" onclick="sendToWhatsApp()">Pode Checar! Já Compartilhei</button>
-    </div>
-
-    <!-- Notificação de espionagem -->
-    <div id="notification" class="notification"></div>
-
-    <script>
-        let typingTimer;
-        let notificationCount = 0;
-        const productInput = document.getElementById('productInput');
-        const notification = document.getElementById('notification');
-        const popup = document.getElementById('popup');
-
-        // Função para mostrar notificação "x pessoas espionando agora!" no canto superior direito
-        setInterval(() => {
-            notificationCount++;
-            notification.textContent = `${notificationCount} pessoa(s) espionando agora!`;
-            notification.style.display = 'block';
-            
-            // A notificação desaparece após 5 segundos
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 5000);
-        }, 60000); // a cada 1 minuto
-
-        // Função para validar o formato do código e enviar para WhatsApp
-        function sendToWhatsApp() {
-            const productCode = productInput.value.trim();
-            if (productCode && productCode.startsWith("HP")) {
-                const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}`;
-                window.open(url, '_blank');
-            } else {
-                alert("Ops! O código deve começar com 'HP'.");
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
             }
         }
 
-        // Função para abrir o popup
-        function openPopup() {
-            popup.style.display = 'block';
-        }
-
-        // Função para fechar o popup
-        function closePopup() {
-            popup.style.display = 'none';
-        }
-
-        // Função para redirecionar para o link "Não Tenho o Espião"
-        function redirectToEspiao() {
-            const productCode = productInput.value.trim();
-            if (productCode && productCode.startsWith("HP")) {
-                const productCodeWith18 = productCode + "18";  // Adicionando o número 18
-                const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCodeWith18)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
-
-                const newWindow = window.open(url, '_blank');
-            } else {
-                alert("O código de transação precisa começar com 'HP'.");
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
             }
         }
 
-        // Função para criar emoticons sorridentes caindo
-        function createSmiley() {
-            const smiley = document.createElement('span');
-            smiley.className = 'smiley';
-            smiley.textContent = '🤑';
-            document.body.appendChild(smiley);
-
-            // Coloca o smiley em posições aleatórias no topo da tela
-            smiley.style.left = Math.random() * window.innerWidth + 'px';
-
-            // Remove o smiley quando ele sair da tela
-            setTimeout(() => {
-                smiley.remove();
-            }, 1000);
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-out;
+            position: relative;
         }
 
-        // Monitorar quando o usuário começa a digitar
-        productInput.addEventListener('input', () => {
-            clearTimeout(typingTimer);
-            typingTimer = setTimeout(() => {
-                // Se o usuário parar de digitar, parar de cair os emoticons
-                if (productInput.value.length > 0) {
-                    createSmiley();
-                }
-            }, 200);
+        h1 {
+            font-size: 24px;
+            color: #333;
+            animation: fadeIn 2s ease-out;
+        }
 
-            // Continuar criando emoticons enquanto o usuário digitar
-            if (productInput.value.length > 0) {
-                createSmiley();
-            }
-        });
-    </script>
-</body>
-</html>
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 25px;
+            border: 2px solid #ccc;
+            width: 80%;
+            font-size: 16px;
+            transition: border 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus {
+            border-color: #6200ea;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #3700b3;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-button i {
+            font-size: 30px;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button-group a {
+            text-decoration: none;
+            width: 48%;
+        }
+
+        .button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            transition: backgrou
