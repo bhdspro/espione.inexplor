@@ -220,8 +220,8 @@
             </button>
         </div>
         <div class="button-group">
-            <a href="https://xproc.inexplor.com" class="button footer-button">😠 Não encontrei o produto na Hotmart</a>
-            <a href="https://ajuda.inexplor.com/hpx9/preciso-ajuda" class="button footer-button">😞 Preciso de ajuda com o Espião HPX9</a>
+            <a href="https://comunidade.inexplor.com" class="button footer-button">😍 Quero entrar na Comunidade</a>
+            <a href="https://ajuda.inexplor.com/hpx9/preciso-ajuda" class="button footer-button">😞 Preciso de ajuda com o Espião</a>
         </div>
     </div>
 
@@ -229,8 +229,8 @@
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
         <p>🤔 Ei, Espião! O que você está procurando?</p>
-        <button class="button" onclick="redirectToEspiao()">😎 Quero a página completa para me afiliar!</button>
-        <button class="button" onclick="sendToWhatsApp()">🤑 Quero apenas o nome do produto</button>
+        <button class="button" onclick="redirectToEspiao()">😎 Quero a página completa para me afiliar</button>
+        <button class="button" onclick="sendToWhatsApp()">😐 Quero apenas o nome do produto</button>
     </div>
 
     <!-- Notificação de espionagem -->
@@ -286,17 +286,17 @@ function sendToWhatsApp() {
             popup.style.display = 'none';
         }
 
-        // Função para redirecionar para o link "Não Tenho o Espião"
-        function redirectToEspiao() {
-            const productCode = productInput.value.trim() + "18";  // Adicionando o número 18
-	        if (productCode && productCode.startsWith("HP")) {
-		    const url = `https://api.whatsapp.com/send?phone=5543991228540&text=Quero%20a%20p%C3%A1gina%20de%20afilia%C3%A7%C3%A3o%20do%20produto%3A%20${encodeURIComponent(productCode)}`;
+	function redirectToEspiao() {
+    		const productCode = productInput.value.trim();
+   		 if (productCode && productCode.startsWith("HP")) {
+        		const url = `https://api.whatsapp.com/send?phone=5543991228540&text=Quero%20a%20p%C3%A1gina%20completa%20de%20afilia%C3%A7%C3%A3o%3A%20${encodeURIComponent(productCode)}`;
 
-            	const newWindow = window.open(url, '_blank');
-	        } else {
-                alert("Ops! O código deve começar com 'HP'.");
-            }
-        }
+        		const newWindow = window.open(url, '_blank');
+    		} else {
+        		alert("Ops! O código deve começar com 'HP'.");
+    		}
+	}
+
 
         // Função para criar emoticons sorridentes caindo
         function createSmiley() {
