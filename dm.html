@@ -221,16 +221,16 @@
             </button>
         </div>
         <div class="button-group">
-            <a href="https://xproc.inexplor.com" class="button footer-button">😠 Não encontrei o produto na Hotmart</a>
-            <a href="https://ajuda.inexplor.com/hpx9/preciso-ajuda" class="button footer-button">😞 Preciso de ajuda com o Espião HPX9</a>
+            <a href="https://comunidade.inexplor.com" class="button footer-button">😍 Quero entrar na Super Comunidade</a>
+            <a href="https://ajuda.inexplor.com/hpx9/preciso-ajuda" class="button footer-button">😞 Preciso de ajuda com o Espião</a>
         </div>
     </div>
 
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
-        <p>OBRIGATÓRIO: Compartilhe o Espião com um afiliado para usá-lo de graça!</p>
-        <button class="button" onclick="redirectToEspiao()">Vou compartilhar agora!</button>
-        <button class="button" onclick="sendToWhatsApp()">Pode checar! Já compartilhei </button>
+        <p>🤔 Ei, Espião! O que você está procurando?</p>
+        <button class="button" onclick="redirectToEspiao()">😎 Quero a página completa para me afiliar</button>
+        <button class="button" onclick="sendToWhatsApp()">😐 Quero apenas o nome do produto</button>
     </div>
 
     <div id="notification" class="notification"></div>
@@ -252,14 +252,24 @@
         }, 60000);
 
         function sendToWhatsApp() {
-            const productCode = productInput.value.trim();
-            if (productCode && productCode.startsWith("HP")) {
-                const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}`;
-                window.open(url, '_blank');
-            } else {
-                alert("Ops! O código deve começar com 'HP'.");
-            }
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
         }
+        return result;
+    }
+
+    const productCode = productInput.value.trim();
+    if (productCode && productCode.startsWith("HP")) {
+        const randomString = generateRandomString(32);
+        const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}&inp=${randomString}`;
+        window.open(url, '_blank');
+    } else {
+        alert("Ops! O código deve começar com 'HP'.");
+    }
+}
 
         function openPopup() {
             popup.style.display = 'block';
@@ -270,14 +280,15 @@
         }
 
         function redirectToEspiao() {
-            const productCode = productInput.value.trim() + "18";  
-            if (productCode && productCode.startsWith("HP")) {
-                const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
-                window.open(url, '_blank');
-            } else {
-                alert("Ops! O código deve começar com 'HP'.");
-            }
-        }
+    		const productCode = productInput.value.trim();
+   		 if (productCode && productCode.startsWith("HP")) {
+        		const url = `https://api.whatsapp.com/send?phone=5543991228540&text=Quero%20a%20p%C3%A1gina%20completa%20de%20afilia%C3%A7%C3%A3o%3A%20${encodeURIComponent(productCode)}`;
+
+        		const newWindow = window.open(url, '_blank');
+    		} else {
+        		alert("Ops! O código deve começar com 'HP'.");
+    		}
+	}
 
         function createSmiley() {
             const smiley = document.createElement('span');
