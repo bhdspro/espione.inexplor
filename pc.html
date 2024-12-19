@@ -228,9 +228,9 @@
     <!-- Popup -->
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
-        <p>O que você está procurando?</p>
-        <button class="button" onclick="redirectToEspiao()">Quero a página de afiliação</button>
-        <button class="button" onclick="sendToWhatsApp()">Quero o nome do produto</button>
+        <p>🤔 Ei, Espião! O que você está procurando?</p>
+        <button class="button" onclick="redirectToEspiao()">😎 Quero a página completa para me afiliar!</button>
+        <button class="button" onclick="sendToWhatsApp()">🤑 Quero apenas o nome do produto</button>
     </div>
 
     <!-- Notificação de espionagem -->
@@ -255,16 +255,26 @@
             }, 5000);
         }, 60000); // a cada 1 minuto
 
-        // Função para validar o formato do código e enviar para WhatsApp
-        function sendToWhatsApp() {
-            const productCode = productInput.value.trim();
-            if (productCode && productCode.startsWith("HP")) {
-                const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}`;
-                window.open(url, '_blank');
-            } else {
-                alert("Ops! O código deve começar com 'HP'.");
-            }
+function sendToWhatsApp() {
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
         }
+        return result;
+    }
+
+    const productCode = productInput.value.trim();
+    if (productCode && productCode.startsWith("HP")) {
+        const randomString = generateRandomString(32);
+        const url = `https://pay.hotmart.com/thanks?transactionReference=${encodeURIComponent(productCode)}&inp=${randomString}`;
+        window.open(url, '_blank');
+    } else {
+        alert("Ops! O código deve começar com 'HP'.");
+    }
+}
+
 
         // Função para abrir o popup
         function openPopup() {
