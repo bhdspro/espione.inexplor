@@ -228,9 +228,9 @@
     <!-- Popup -->
     <div id="popup" class="popup">
         <span class="close-btn" onclick="closePopup()">X</span>
-        <p>OBRIGATÓRIO: Compartilhe o Espião com um afiliado para usá-lo de graça!</p>
-        <button class="button" onclick="redirectToEspiao()">Vou compartilhar agora!</button>
-        <button class="button" onclick="sendToWhatsApp()">Pode checar! Já compartilhei </button>
+        <p>O que você está procurando?</p>
+        <button class="button" onclick="redirectToEspiao()">Quero o nome do produto</button>
+        <button class="button" onclick="sendToWhatsApp()">Quero a página de afiliação</button>
     </div>
 
     <!-- Notificação de espionagem -->
@@ -280,7 +280,7 @@
         function redirectToEspiao() {
             const productCode = productInput.value.trim() + "18";  // Adicionando o número 18
 	        if (productCode && productCode.startsWith("HP")) {
-		    const url = `https://api.whatsapp.com/send?text=Achei%20o%20produto%20de%20um%20afiliado%20pelo%20código%20de%20transação%20${encodeURIComponent(productCode)}%0ADá%20uma%20olhada%20%E2%9E%A0%20https%3A%2F%2Fespione.inexplor.com`;
+		    const url = `https://api.whatsapp.com/send?phone=5543991228540&text=Quero%20a%20p%C3%A1gina%20de%20afilia%C3%A7%C3%A3o%20do%20produto%3A%20${encodeURIComponent(productCode)}`;
 
             	const newWindow = window.open(url, '_blank');
 	        } else {
