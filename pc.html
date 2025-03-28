@@ -11,7 +11,7 @@
     <meta property="og:image" content="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
     <meta property="og:url" content="https://inexplor.com">
     <title>Espião de Produto Oculto - Inexplor</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
     <link rel="icon" type="image/png" href="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
     
     <style>
@@ -210,7 +210,7 @@
                     const productCode = match[1];
                     const whatsappNumber = '5543991228540';
                     const whatsappMessage = `Consulte o Produto Oculto da ${pattern.name}: ${productCode}`;
-                    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+                    const whatsappUrl = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
                     
                     window.open(whatsappUrl, '_blank');
                     matched = true;
