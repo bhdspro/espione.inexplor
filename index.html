@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Metadados -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Espione e descubra os melhores produtos ocultos na Hotmart, Braip, Logzz, Digistore24 e outras plataformas. Venda sem concorrência e lucre muito como afiliado.">
@@ -17,14 +16,10 @@
 </head>
 <body>
 
-    <!-- Seu conteúdo HTML -->
-
     <script>
-        // Função para identificar o tipo de dispositivo com base no User-Agent
         function getDeviceType() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Verificações avançadas para dispositivos móveis
             if (/android/i.test(userAgent)) {
                 return 'mobile';
             }
@@ -35,11 +30,9 @@
                 return 'mobile';
             }
 
-            // Verificação para desktops ou outros dispositivos
             return 'desktop';
         }
 
-        // Redirecionamento baseado no tipo de dispositivo
         var deviceType = getDeviceType();
 
         if (deviceType === 'mobile') {
