@@ -11,7 +11,7 @@
     <meta property="og:image" content="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
     <meta property="og:url" content="https://inexplor.com">
     <title>Espião de Produto Oculto - Inexplor</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
     <link rel="icon" type="image/png" href="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
     
     <style>
@@ -44,7 +44,7 @@
 .typing {
     display: inline-block;
     vertical-align: middle;
-    transform: translateY(-2px); /* Ajusta a posição do texto com efeito */
+    transform: translateY(-2px);
 }
 
 
@@ -106,10 +106,10 @@
     margin-top: 10px;
     font-weight: bold;
     display: flex;
-    justify-content: center;  /* Centraliza horizontalmente */
-    align-items: center;      /* Centraliza verticalmente */
-    text-align: center;       /* Garante que o texto dentro também seja centralizado */
-    display: none;            /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+    display: none; 
 }
 
 
@@ -210,7 +210,6 @@
             const input = document.getElementById('hotmart-link').value;
             const errorMessage = document.getElementById('error-message');
             
-            // Define os padrões de links para Hotmart, Kirvano, Eduzz, Braip, Logzz e Digistore24
             const patterns = [
                 { regex: /^https:\/\/pay\.hotmart\.com\/(\w+)/, name: 'Hotmart' },
                 { regex: /^https:\/\/pay\.kirvano\.com\/(\w{8}-\w{4}-\w{4}-\w{4}-\w{12})/, name: 'Kirvano' },
